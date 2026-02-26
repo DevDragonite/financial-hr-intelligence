@@ -282,22 +282,88 @@ LANG_NAMES = {"ES": "Español", "EN": "English", "BR": "Português"}
 def render_language_selector():
     cur = st.session_state.lang
     others = [l for l in ["ES","EN","BR"] if l != cur]
-    emoji_flags = {"ES": "🇻🇪", "EN": "🇺🇸", "BR": "🇧🇷"}
+    
+    # Dynamic CSS to inject flags into buttons
+    # We use a unique class or target the popover to show the CURRENT flag
+    st.markdown(f"""
+    <style>
+    /* 1. Collapsed Popover Button Flag */
+    [data-testid="stPopover"] > button {{
+        padding-left: 50px !important;
+        position: relative;
+        min-height: 38px;
+    }}
+    [data-testid="stPopover"] > button::before {{
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 26px;
+        height: 18px;
+        background-image: url("{FLAG_URLS[cur]}");
+        background-size: cover;
+        background-position: center;
+        border-radius: 3px;
+        border: 1px solid rgba(255,255,255,0.1);
+        z-index: 1;
+    }}
+    
+    /* 2. Popover Body Styling */
+    [data-testid="stPopoverBody"] {{
+        background-color: #353831 !important;
+        border: 1px solid #3f5e5a !important;
+        padding: 10px !important;
+    }}
+    
+    /* 3. Dropdown Buttons (Inside Popover) */
+    /* Target the first and second button in the popover */
+    [data-testid="stPopoverBody"] button {{
+        padding-left: 45px !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        position: relative;
+        margin-bottom: 4px;
+        border: 1px solid rgba(32,252,143,0.1) !important;
+    }}
+    [data-testid="stPopoverBody"] button:hover {{
+        border-color: #20fc8f !important;
+        background: rgba(32,252,143,0.05) !important;
+    }}
+    
+    /* Specific flags for buttons inside based on their order */
+    /* We'll use a slightly different approach: the button label has the language code */
+    </style>
+    """, unsafe_allow_html=True)
 
-    _, col_space, col_lang = st.columns([1, 5, 2])
+    _, col_space, col_lang = st.columns([1, 4, 3])
     with col_lang:
-        popover_label = f"{emoji_flags[cur]} {cur} — {LANG_NAMES[cur]}"
+        # The label shows the current language name
+        popover_label = f"{cur} — {LANG_NAMES[cur]}"
         with st.popover(popover_label, use_container_width=True):
-            # Show the other 2 languages as clickable options with flags
-            for lang_code in others:
+            for i, lang_code in enumerate(others):
                 flag_url = FLAG_URLS[lang_code]
+                # Inject a tiny CSS style specifically for this button using its key-derived ID
+                # Streamlit hashes the key into the button ID, but we can use st.markdown logic
                 st.markdown(f"""
-                <div style="display:flex;align-items:center;gap:8px;padding:2px 0;">
-                    <img src="{flag_url}" style="height:18px;border-radius:3px;">
-                    <span style="color:#c4d8cd;font-size:0.85rem;">{lang_code} — {LANG_NAMES[lang_code]}</span>
-                </div>
+                <style>
+                /* Target by order inside the popover body */
+                [data-testid="stPopoverBody"] button:nth-of-type({i+1})::before {{
+                    content: "";
+                    position: absolute;
+                    left: 12px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 24px;
+                    height: 17px;
+                    background-image: url("{flag_url}");
+                    background-size: cover;
+                    border-radius: 2px;
+                }}
+                </style>
                 """, unsafe_allow_html=True)
-                if st.button(f"➜ {LANG_NAMES[lang_code]}", key=f"lang_{lang_code}", use_container_width=True):
+                
+                if st.button(f"{lang_code} — {LANG_NAMES[lang_code]}", key=f"btn_{lang_code}", use_container_width=True):
                     st.session_state.lang = lang_code
                     st.rerun()
 
