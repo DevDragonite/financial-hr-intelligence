@@ -283,24 +283,24 @@ def render_language_selector():
     cur = st.session_state.lang
     others = [l for l in ["ES","EN","BR"] if l != cur]
     
-    # 1. Define specific flags
+    # 1. Precise URLs for CSS
     flag_cur = FLAG_URLS[cur]
     flag_o1 = FLAG_URLS[others[0]]
     flag_o2 = FLAG_URLS[others[1]]
     
-    # 2. Consolidated CSS injection for precise targeting
+    # 2. Consolidated CSS injection with robust selectors
     st.markdown(f"""
     <style>
     /* Main Popover Button (Collapsed) */
-    [data-testid="stPopover"] > button {{
+    div[data-testid="stPopover"] button {{
         padding-left: 50px !important;
         position: relative;
-        min-height: 38px;
+        min-height: 40px;
     }}
-    [data-testid="stPopover"] > button::before {{
+    div[data-testid="stPopover"] button::before {{
         content: "";
         position: absolute;
-        left: 14px;
+        left: 12px;
         top: 50%;
         transform: translateY(-50%);
         width: 25px;
@@ -308,27 +308,27 @@ def render_language_selector():
         background-image: url("{flag_cur}");
         background-size: cover;
         background-position: center;
-        border-radius: 2px;
+        border-radius: 3px;
         border: 1px solid rgba(255,255,255,0.25);
-        z-index: 5;
+        z-index: 99;
     }}
     
-    /* Popover Body Styling */
+    /* Popover Body Container */
     [data-testid="stPopoverBody"] {{
         background-color: #353831 !important;
         border: 1px solid #3f5e5a !important;
-        padding: 8px !important;
+        padding: 5px !important;
     }}
     
-    /* First Button inside Popover */
-    [data-testid="stPopoverBody"] button:nth-of-type(1) {{
+    /* First Button inside Dropdown (wrapped in div) */
+    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(1) button {{
         padding-left: 45px !important;
         position: relative;
         text-align: left !important;
         justify-content: flex-start !important;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }}
-    [data-testid="stPopoverBody"] button:nth-of-type(1)::before {{
+    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(1) button::before {{
         content: "";
         position: absolute;
         left: 12px;
@@ -340,16 +340,17 @@ def render_language_selector():
         background-size: cover;
         border-radius: 2px;
         border: 1px solid rgba(255,255,255,0.1);
+        z-index: 99;
     }}
     
-    /* Second Button inside Popover */
-    [data-testid="stPopoverBody"] button:nth-of-type(2) {{
+    /* Second Button inside Dropdown */
+    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(2) button {{
         padding-left: 45px !important;
         position: relative;
         text-align: left !important;
         justify-content: flex-start !important;
     }}
-    [data-testid="stPopoverBody"] button:nth-of-type(2)::before {{
+    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(2) button::before {{
         content: "";
         position: absolute;
         left: 12px;
@@ -361,6 +362,7 @@ def render_language_selector():
         background-size: cover;
         border-radius: 2px;
         border: 1px solid rgba(255,255,255,0.1);
+        z-index: 99;
     }}
     </style>
     """, unsafe_allow_html=True)
