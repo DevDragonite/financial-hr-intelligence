@@ -285,29 +285,31 @@ def render_language_selector():
 
     _, col_space, col_lang = st.columns([1, 5, 2])
     with col_lang:
-        # Show current language as active pill, then buttons for the other 2
         cur_flag = FLAG_URLS[cur]
-        st.markdown(f"""
-        <div style="display:flex;align-items:center;gap:8px;justify-content:flex-end;margin-top:4px;">
-            <div class="lang-active">
-                <img src="{cur_flag}" style="height:16px;border-radius:2px;">
-                {cur} — {LANG_NAMES[cur]}
+        popover_label = f"🌐 {cur} — {LANG_NAMES[cur]}"
+        with st.popover(popover_label, use_container_width=True):
+            # Show current as header with flag image
+            st.markdown(f"""
+            <div style="display:flex;align-items:center;gap:8px;padding:4px 0 8px;
+                 border-bottom:1px solid rgba(32,252,143,0.15);margin-bottom:8px;">
+                <img src="{cur_flag}" style="height:20px;border-radius:3px;">
+                <span style="color:#20fc8f;font-weight:700;font-size:0.9rem;">
+                    {cur} — {LANG_NAMES[cur]} ✓
+                </span>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        # Two buttons for the other languages
-        b1, b2 = st.columns(2)
-        with b1:
-            flag1 = FLAG_URLS[others[0]]
-            if st.button(f"  {others[0]}", key=f"lang_{others[0]}", use_container_width=True):
-                st.session_state.lang = others[0]
-                st.rerun()
-        with b2:
-            flag2 = FLAG_URLS[others[1]]
-            if st.button(f"  {others[1]}", key=f"lang_{others[1]}", use_container_width=True):
-                st.session_state.lang = others[1]
-                st.rerun()
+            """, unsafe_allow_html=True)
+            # Show the other 2 languages as clickable options with flags
+            for lang_code in others:
+                flag_url = FLAG_URLS[lang_code]
+                st.markdown(f"""
+                <div style="display:flex;align-items:center;gap:8px;padding:2px 0;">
+                    <img src="{flag_url}" style="height:18px;border-radius:3px;">
+                    <span style="color:#c4d8cd;font-size:0.85rem;">{lang_code} — {LANG_NAMES[lang_code]}</span>
+                </div>
+                """, unsafe_allow_html=True)
+                if st.button(f"➜ {LANG_NAMES[lang_code]}", key=f"lang_{lang_code}", use_container_width=True):
+                    st.session_state.lang = lang_code
+                    st.rerun()
 
 render_language_selector()
 
