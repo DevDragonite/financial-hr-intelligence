@@ -1,0 +1,23 @@
+{
+    "venvPath": ".",
+    "venv": "venv",
+    "pythonVersion": "3.13",
+    "pythonPlatform": "Windows",
+    "include": [
+        "app.py",
+        "config.py",
+        "translations.py",
+        "financial_pipeline.py",
+        "hr_pipeline.py",
+        "test_imports.py",
+        "generate_notebooks.py"
+    ],
+    "exclude": [
+        "venv",
+        "notebooks",
+        "output",
+        "data"
+    ],
+    "reportMissingImports": false,
+    "reportMissingModuleSource": false
+}
