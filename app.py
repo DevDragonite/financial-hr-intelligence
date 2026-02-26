@@ -283,11 +283,15 @@ def render_language_selector():
     cur = st.session_state.lang
     others = [l for l in ["ES","EN","BR"] if l != cur]
     
-    # Dynamic CSS to inject flags into buttons
-    # We use a unique class or target the popover to show the CURRENT flag
+    # 1. Define specific flags
+    flag_cur = FLAG_URLS[cur]
+    flag_o1 = FLAG_URLS[others[0]]
+    flag_o2 = FLAG_URLS[others[1]]
+    
+    # 2. Consolidated CSS injection for precise targeting
     st.markdown(f"""
     <style>
-    /* 1. Collapsed Popover Button Flag */
+    /* Main Popover Button (Collapsed) */
     [data-testid="stPopover"] > button {{
         padding-left: 50px !important;
         position: relative;
@@ -296,76 +300,81 @@ def render_language_selector():
     [data-testid="stPopover"] > button::before {{
         content: "";
         position: absolute;
-        left: 12px;
+        left: 14px;
         top: 50%;
         transform: translateY(-50%);
-        width: 26px;
+        width: 25px;
         height: 18px;
-        background-image: url("{FLAG_URLS[cur]}");
+        background-image: url("{flag_cur}");
         background-size: cover;
         background-position: center;
-        border-radius: 3px;
-        border: 1px solid rgba(255,255,255,0.1);
-        z-index: 1;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.25);
+        z-index: 5;
     }}
     
-    /* 2. Popover Body Styling */
+    /* Popover Body Styling */
     [data-testid="stPopoverBody"] {{
         background-color: #353831 !important;
         border: 1px solid #3f5e5a !important;
-        padding: 10px !important;
+        padding: 8px !important;
     }}
     
-    /* 3. Dropdown Buttons (Inside Popover) */
-    /* Target the first and second button in the popover */
-    [data-testid="stPopoverBody"] button {{
+    /* First Button inside Popover */
+    [data-testid="stPopoverBody"] button:nth-of-type(1) {{
         padding-left: 45px !important;
+        position: relative;
         text-align: left !important;
         justify-content: flex-start !important;
-        position: relative;
-        margin-bottom: 4px;
-        border: 1px solid rgba(32,252,143,0.1) !important;
+        margin-bottom: 6px;
     }}
-    [data-testid="stPopoverBody"] button:hover {{
-        border-color: #20fc8f !important;
-        background: rgba(32,252,143,0.05) !important;
+    [data-testid="stPopoverBody"] button:nth-of-type(1)::before {{
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 22px;
+        height: 15px;
+        background-image: url("{flag_o1}");
+        background-size: cover;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.1);
     }}
     
-    /* Specific flags for buttons inside based on their order */
-    /* We'll use a slightly different approach: the button label has the language code */
+    /* Second Button inside Popover */
+    [data-testid="stPopoverBody"] button:nth-of-type(2) {{
+        padding-left: 45px !important;
+        position: relative;
+        text-align: left !important;
+        justify-content: flex-start !important;
+    }}
+    [data-testid="stPopoverBody"] button:nth-of-type(2)::before {{
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 22px;
+        height: 15px;
+        background-image: url("{flag_o2}");
+        background-size: cover;
+        border-radius: 2px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }}
     </style>
     """, unsafe_allow_html=True)
 
     _, col_space, col_lang = st.columns([1, 4, 3])
     with col_lang:
-        # The label shows the current language name
         popover_label = f"{cur} — {LANG_NAMES[cur]}"
         with st.popover(popover_label, use_container_width=True):
-            for i, lang_code in enumerate(others):
-                flag_url = FLAG_URLS[lang_code]
-                # Inject a tiny CSS style specifically for this button using its key-derived ID
-                # Streamlit hashes the key into the button ID, but we can use st.markdown logic
-                st.markdown(f"""
-                <style>
-                /* Target by order inside the popover body */
-                [data-testid="stPopoverBody"] button:nth-of-type({i+1})::before {{
-                    content: "";
-                    position: absolute;
-                    left: 12px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: 24px;
-                    height: 17px;
-                    background-image: url("{flag_url}");
-                    background-size: cover;
-                    border-radius: 2px;
-                }}
-                </style>
-                """, unsafe_allow_html=True)
-                
-                if st.button(f"{lang_code} — {LANG_NAMES[lang_code]}", key=f"btn_{lang_code}", use_container_width=True):
-                    st.session_state.lang = lang_code
-                    st.rerun()
+            if st.button(f"{others[0]} — {LANG_NAMES[others[0]]}", key=f"btn_{others[0]}", use_container_width=True):
+                st.session_state.lang = others[0]
+                st.rerun()
+            if st.button(f"{others[1]} — {LANG_NAMES[others[1]]}", key=f"btn_{others[1]}", use_container_width=True):
+                st.session_state.lang = others[1]
+                st.rerun()
 
 render_language_selector()
 
