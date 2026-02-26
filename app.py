@@ -283,10 +283,7 @@ def render_language_selector():
     cur = st.session_state.lang
     langs = ["ES", "EN", "PT"]
     
-    # Precise flag mapping for CSS
-    f_map = { code: FLAG_URLS[code] for code in langs }
-    
-    # 2. Consolidated CSS injection with robust selectors for ALL 3 buttons
+    # 2. Consolidated CSS injection with MORE ROBUST selectors for dropdown
     st.markdown(f"""
     <style>
     /* Main Popover Button (Collapsed) */
@@ -295,6 +292,7 @@ def render_language_selector():
         position: relative;
         min-height: 42px;
         border: 1px solid rgba(32,252,143,0.3) !important;
+        border-radius: 10px !important;
     }}
     div[data-testid="stPopover"] button::before {{
         content: "";
@@ -304,7 +302,7 @@ def render_language_selector():
         transform: translateY(-50%);
         width: 28px;
         height: 19px;
-        background-image: url("{f_map[cur]}");
+        background-image: url("{FLAG_URLS[cur]}");
         background-size: cover;
         background-position: center;
         border-radius: 3px;
@@ -312,45 +310,50 @@ def render_language_selector():
         z-index: 99;
     }}
     
-    /* Popover Body Container */
+    /* Popover Body Styling */
     [data-testid="stPopoverBody"] {{
         background-color: #353831 !important;
         border: 1px solid #3f5e5a !important;
-        padding: 10px !important;
+        padding: 5px !important;
         min-width: 220px !important;
     }}
     
-    /* Uniform Button Style for Dropdown */
-    [data-testid="stPopoverBody"] div[data-testid="stButton"] button {{
-        padding-left: 50px !important;
-        position: relative;
-        text-align: left !important;
+    /* Target buttons specifically by their wrapper index inside the popover */
+    /* Streamlit structure: stPopoverBody -> stVerticalBlock -> div.element-container */
+    [data-testid="stPopoverBody"] div.element-container:nth-child(1) button {{
+        padding-left: 48px !important; position: relative; text-align: left !important;
+        justify-content: flex-start !important; margin-bottom: 4px;
+    }}
+    [data-testid="stPopoverBody"] div.element-container:nth-child(1) button::before {{
+        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+        width: 22px; height: 16px; background-image: url("{FLAG_URLS[langs[0]]}");
+        background-size: cover; border-radius: 2px; border: 1px solid rgba(255,255,255,0.1);
+    }}
+    
+    [data-testid="stPopoverBody"] div.element-container:nth-child(2) button {{
+        padding-left: 48px !important; position: relative; text-align: left !important;
+        justify-content: flex-start !important; margin-bottom: 4px;
+    }}
+    [data-testid="stPopoverBody"] div.element-container:nth-child(2) button::before {{
+        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+        width: 22px; height: 16px; background-image: url("{FLAG_URLS[langs[1]]}");
+        background-size: cover; border-radius: 2px; border: 1px solid rgba(255,255,255,0.1);
+    }}
+    
+    [data-testid="stPopoverBody"] div.element-container:nth-child(3) button {{
+        padding-left: 48px !important; position: relative; text-align: left !important;
         justify-content: flex-start !important;
-        margin-bottom: 6px;
-        border: 1px solid rgba(32,252,143,0.1) !important;
+    }}
+    [data-testid="stPopoverBody"] div.element-container:nth-child(3) button::before {{
+        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+        width: 22px; height: 16px; background-image: url("{FLAG_URLS[langs[2]]}");
+        background-size: cover; border-radius: 2px; border: 1px solid rgba(255,255,255,0.1);
     }}
     
-    /* Specific Flag Injections for the 3 buttons by nth-of-type targeting */
-    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(1) button::before {{
-        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-        width: 25px; height: 17px; background-image: url("{f_map[langs[0]]}");
-        background-size: cover; border-radius: 2px; z-index: 100;
-    }}
-    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(2) button::before {{
-        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-        width: 25px; height: 17px; background-image: url("{f_map[langs[1]]}");
-        background-size: cover; border-radius: 2px; z-index: 100;
-    }}
-    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(3) button::before {{
-        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-        width: 25px; height: 17px; background-image: url("{f_map[langs[2]]}");
-        background-size: cover; border-radius: 2px; z-index: 100;
-    }}
-    
-    /* Special styling for the active one in dropdown */
-    [data-testid="stPopoverBody"] div[data-testid="stButton"] button:has(span:contains("{cur}")) {{
-        border: 1px solid #20fc8f !important;
-        background: rgba(32,252,143,0.08) !important;
+    /* Active highlight */
+    [data-testid="stPopoverBody"] button:hover {{
+        border-color: #20fc8f !important;
+        background: rgba(32,252,143,0.05) !important;
     }}
     </style>
     """, unsafe_allow_html=True)
@@ -360,9 +363,11 @@ def render_language_selector():
         popover_label = f"{cur} — {LANG_NAMES[cur]}"
         with st.popover(popover_label, use_container_width=True):
             for lang_code in langs:
-                # Highlight active language with checkmark suffix
-                suffix = " ✓" if lang_code == cur else ""
-                if st.button(f"{lang_code} — {LANG_NAMES[lang_code]}{suffix}", key=f"btn_{lang_code}", use_container_width=True):
+                # Add checkmark for active
+                label = f"{lang_code} — {LANG_NAMES[lang_code]}"
+                if lang_code == cur: label += " ✓"
+                
+                if st.button(label, key=f"btn_{lang_code}", use_container_width=True):
                     st.session_state.lang = lang_code
                     st.rerun()
 
@@ -388,7 +393,7 @@ def load_or_run():
     if not all(os.path.exists(c) for c in csvs):
         with st.spinner("Generando datos — puede tomar 2-3 min..."):
             from financial_pipeline import run_financial_pipeline
-            run_financial_pipeline(5000)
+            run_financial_pipeline(500)
             from hr_pipeline import run_hr_pipeline
             run_hr_pipeline()
     return load_data()
