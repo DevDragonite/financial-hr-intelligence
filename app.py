@@ -282,22 +282,12 @@ LANG_NAMES = {"ES": "Español", "EN": "English", "BR": "Português"}
 def render_language_selector():
     cur = st.session_state.lang
     others = [l for l in ["ES","EN","BR"] if l != cur]
+    emoji_flags = {"ES": "🇻🇪", "EN": "🇺🇸", "BR": "🇧🇷"}
 
     _, col_space, col_lang = st.columns([1, 5, 2])
     with col_lang:
-        cur_flag = FLAG_URLS[cur]
-        popover_label = f"🌐 {cur} — {LANG_NAMES[cur]}"
+        popover_label = f"{emoji_flags[cur]} {cur} — {LANG_NAMES[cur]}"
         with st.popover(popover_label, use_container_width=True):
-            # Show current as header with flag image
-            st.markdown(f"""
-            <div style="display:flex;align-items:center;gap:8px;padding:4px 0 8px;
-                 border-bottom:1px solid rgba(32,252,143,0.15);margin-bottom:8px;">
-                <img src="{cur_flag}" style="height:20px;border-radius:3px;">
-                <span style="color:#20fc8f;font-weight:700;font-size:0.9rem;">
-                    {cur} — {LANG_NAMES[cur]} ✓
-                </span>
-            </div>
-            """, unsafe_allow_html=True)
             # Show the other 2 languages as clickable options with flags
             for lang_code in others:
                 flag_url = FLAG_URLS[lang_code]
