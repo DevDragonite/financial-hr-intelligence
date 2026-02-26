@@ -158,7 +158,7 @@ TEXTS = {
         "dashboard_subtitle": "Integrated CFO + CHRO analysis with validated statistical evidence",
     },
     # ──────────────────────────────────────────────────────────
-    "BR": {
+    "PT": {
         "app_title":          "Centro de Inteligência Financeira e RH",
         "nav_intro":          "Introdução",
         "nav_dashboard":      "Dashboard",

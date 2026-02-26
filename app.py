@@ -1,6 +1,6 @@
 """
 app.py — Financial & HR Intelligence Center
-Executive Glass Design · Dark Earth & Neon Green · ES/EN/BR
+Executive Glass Design · Dark Earth & Neon Green · ES/EN/PT
 """
 import os
 import warnings
@@ -275,41 +275,40 @@ inject_css()
 FLAG_URLS = {
     "ES": "https://flagcdn.com/w40/ve.png",
     "EN": "https://flagcdn.com/w40/us.png",
-    "BR": "https://flagcdn.com/w40/br.png",
+    "PT": "https://flagcdn.com/w40/br.png",
 }
-LANG_NAMES = {"ES": "Español", "EN": "English", "BR": "Português"}
+LANG_NAMES = {"ES": "Español", "EN": "English", "PT": "Português"}
 
 def render_language_selector():
     cur = st.session_state.lang
-    others = [l for l in ["ES","EN","BR"] if l != cur]
+    langs = ["ES", "EN", "PT"]
     
-    # 1. Precise URLs for CSS
-    flag_cur = FLAG_URLS[cur]
-    flag_o1 = FLAG_URLS[others[0]]
-    flag_o2 = FLAG_URLS[others[1]]
+    # Precise flag mapping for CSS
+    f_map = { code: FLAG_URLS[code] for code in langs }
     
-    # 2. Consolidated CSS injection with robust selectors
+    # 2. Consolidated CSS injection with robust selectors for ALL 3 buttons
     st.markdown(f"""
     <style>
     /* Main Popover Button (Collapsed) */
     div[data-testid="stPopover"] button {{
-        padding-left: 50px !important;
+        padding-left: 54px !important;
         position: relative;
-        min-height: 40px;
+        min-height: 42px;
+        border: 1px solid rgba(32,252,143,0.3) !important;
     }}
     div[data-testid="stPopover"] button::before {{
         content: "";
         position: absolute;
-        left: 12px;
+        left: 14px;
         top: 50%;
         transform: translateY(-50%);
-        width: 25px;
-        height: 18px;
-        background-image: url("{flag_cur}");
+        width: 28px;
+        height: 19px;
+        background-image: url("{f_map[cur]}");
         background-size: cover;
         background-position: center;
         border-radius: 3px;
-        border: 1px solid rgba(255,255,255,0.25);
+        border: 1px solid rgba(255,255,255,0.2);
         z-index: 99;
     }}
     
@@ -317,66 +316,55 @@ def render_language_selector():
     [data-testid="stPopoverBody"] {{
         background-color: #353831 !important;
         border: 1px solid #3f5e5a !important;
-        padding: 5px !important;
+        padding: 10px !important;
+        min-width: 220px !important;
     }}
     
-    /* First Button inside Dropdown (wrapped in div) */
-    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(1) button {{
-        padding-left: 45px !important;
+    /* Uniform Button Style for Dropdown */
+    [data-testid="stPopoverBody"] div[data-testid="stButton"] button {{
+        padding-left: 50px !important;
         position: relative;
         text-align: left !important;
         justify-content: flex-start !important;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
+        border: 1px solid rgba(32,252,143,0.1) !important;
     }}
+    
+    /* Specific Flag Injections for the 3 buttons by nth-of-type targeting */
     [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(1) button::before {{
-        content: "";
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 22px;
-        height: 15px;
-        background-image: url("{flag_o1}");
-        background-size: cover;
-        border-radius: 2px;
-        border: 1px solid rgba(255,255,255,0.1);
-        z-index: 99;
-    }}
-    
-    /* Second Button inside Dropdown */
-    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(2) button {{
-        padding-left: 45px !important;
-        position: relative;
-        text-align: left !important;
-        justify-content: flex-start !important;
+        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+        width: 25px; height: 17px; background-image: url("{f_map[langs[0]]}");
+        background-size: cover; border-radius: 2px; z-index: 100;
     }}
     [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(2) button::before {{
-        content: "";
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 22px;
-        height: 15px;
-        background-image: url("{flag_o2}");
-        background-size: cover;
-        border-radius: 2px;
-        border: 1px solid rgba(255,255,255,0.1);
-        z-index: 99;
+        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+        width: 25px; height: 17px; background-image: url("{f_map[langs[1]]}");
+        background-size: cover; border-radius: 2px; z-index: 100;
+    }}
+    [data-testid="stPopoverBody"] div[data-testid="stButton"]:nth-of-type(3) button::before {{
+        content: ""; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+        width: 25px; height: 17px; background-image: url("{f_map[langs[2]]}");
+        background-size: cover; border-radius: 2px; z-index: 100;
+    }}
+    
+    /* Special styling for the active one in dropdown */
+    [data-testid="stPopoverBody"] div[data-testid="stButton"] button:has(span:contains("{cur}")) {{
+        border: 1px solid #20fc8f !important;
+        background: rgba(32,252,143,0.08) !important;
     }}
     </style>
     """, unsafe_allow_html=True)
 
-    _, col_space, col_lang = st.columns([1, 4, 3])
+    _, col_space, col_lang = st.columns([2, 3, 3])
     with col_lang:
         popover_label = f"{cur} — {LANG_NAMES[cur]}"
         with st.popover(popover_label, use_container_width=True):
-            if st.button(f"{others[0]} — {LANG_NAMES[others[0]]}", key=f"btn_{others[0]}", use_container_width=True):
-                st.session_state.lang = others[0]
-                st.rerun()
-            if st.button(f"{others[1]} — {LANG_NAMES[others[1]]}", key=f"btn_{others[1]}", use_container_width=True):
-                st.session_state.lang = others[1]
-                st.rerun()
+            for lang_code in langs:
+                # Highlight active language with checkmark suffix
+                suffix = " ✓" if lang_code == cur else ""
+                if st.button(f"{lang_code} — {LANG_NAMES[lang_code]}{suffix}", key=f"btn_{lang_code}", use_container_width=True):
+                    st.session_state.lang = lang_code
+                    st.rerun()
 
 render_language_selector()
 
