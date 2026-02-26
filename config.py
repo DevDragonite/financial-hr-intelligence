@@ -1,37 +1,42 @@
-# config.py — Deep Navy Executive Glass palette
-# Coolors: #b9d6f2 · #061a40 · #0353a4 · #006daa · #003559
+# config.py — Teal & Blue Executive Glass palette
+# Coolors: #3066be · #119da4 · #6d9dc5 · #80ded9 · #aeecef
 
 COLORS = {
     # ── Fondos ──────────────────────────────────────
-    "bg_gradient": "linear-gradient(135deg, #061a40 0%, #003559 50%, #061a40 100%)",
-    "surface": "rgba(3, 83, 164, 0.12)",
-    "surface_hover": "rgba(3, 83, 164, 0.22)",
+    "bg_gradient": "linear-gradient(135deg, #0a1628 0%, #112240 50%, #0a1628 100%)",
+    "surface": "rgba(17, 157, 164, 0.10)",
+    "surface_hover": "rgba(17, 157, 164, 0.18)",
 
-    # ── Acento principal — Azul royal ───────────────
-    "primary": "#0353a4",
-    "primary_soft": "rgba(3, 83, 164, 0.18)",
+    # ── Acento principal — Royal Blue ───────────────
+    "primary": "#3066be",
+    "primary_soft": "rgba(48, 102, 190, 0.18)",
 
-    # ── Acento secundario — Cerulean ────────────────
-    "secondary": "#006daa",
-    "secondary_soft": "rgba(0, 109, 170, 0.18)",
+    # ── Acento secundario — Teal ────────────────────
+    "secondary": "#119da4",
+    "secondary_soft": "rgba(17, 157, 164, 0.18)",
 
-    # ── Acento terciario — Lt Blue highlight ────────
-    "accent": "#b9d6f2",
-    "accent_soft": "rgba(185, 214, 242, 0.12)",
+    # ── Acento terciario — Steel Blue ───────────────
+    "accent": "#6d9dc5",
+    "accent_soft": "rgba(109, 157, 197, 0.12)",
+
+    # ── Highlight — Aqua / Mint ─────────────────────
+    "highlight": "#80ded9",
+    "highlight_soft": "rgba(128, 222, 217, 0.12)",
+    "highlight_light": "#aeecef",
 
     # ── Semáforo financiero ──────────────────────────
-    "positive": "#4caf82",     # Verde institucional
-    "neutral":  "#f0a500",     # Ámbar
-    "negative": "#e05252",     # Rojo suave
+    "positive": "#80ded9",
+    "neutral":  "#6d9dc5",
+    "negative": "#e05252",
 
     # ── Texto ────────────────────────────────────────
     "text_primary": "#e8f4fd",
-    "text_muted":   "#7ba7c9",
-    "text_accent":  "#b9d6f2",
+    "text_muted":   "#6d9dc5",
+    "text_accent":  "#80ded9",
 
     # ── Bordes ───────────────────────────────────────
-    "border":       "rgba(185, 214, 242, 0.20)",
-    "border_strong":"rgba(185, 214, 242, 0.45)",
+    "border":       "rgba(128, 222, 217, 0.18)",
+    "border_strong":"rgba(128, 222, 217, 0.40)",
 }
 
 PLOTLY_TEMPLATE = {
@@ -44,23 +49,23 @@ PLOTLY_TEMPLATE = {
             "size": 12,
         },
         "colorway": [
-            "#b9d6f2", "#0353a4", "#006daa",
-            "#4caf82", "#f0a500", "#e05252",
+            "#80ded9", "#3066be", "#119da4",
+            "#6d9dc5", "#aeecef", "#e05252",
             "#7b68ee", "#fb923c",
         ],
         "xaxis": {
-            "gridcolor": "rgba(185,214,242,0.06)",
-            "linecolor": "rgba(185,214,242,0.12)",
-            "zerolinecolor": "rgba(185,214,242,0.10)",
+            "gridcolor": "rgba(128,222,217,0.06)",
+            "linecolor": "rgba(128,222,217,0.12)",
+            "zerolinecolor": "rgba(128,222,217,0.10)",
         },
         "yaxis": {
-            "gridcolor": "rgba(185,214,242,0.06)",
-            "linecolor": "rgba(185,214,242,0.12)",
-            "zerolinecolor": "rgba(185,214,242,0.10)",
+            "gridcolor": "rgba(128,222,217,0.06)",
+            "linecolor": "rgba(128,222,217,0.12)",
+            "zerolinecolor": "rgba(128,222,217,0.10)",
         },
         "legend": {
-            "bgcolor":     "rgba(6,26,64,0.7)",
-            "bordercolor": "rgba(185,214,242,0.20)",
+            "bgcolor":     "rgba(10,22,40,0.7)",
+            "bordercolor": "rgba(128,222,217,0.20)",
         },
     }
 }
