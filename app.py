@@ -387,18 +387,10 @@ def load_data():
         st.error(f"Error cargando datos: {e}. Ejecuta los pipelines primero.")
         return {}
 
-def load_or_run():
-    csvs = ["output/financial_clean.csv","output/arima_forecast.csv",
-            "output/monte_carlo_results.csv","output/hr_clean.csv"]
-    if not all(os.path.exists(c) for c in csvs):
-        with st.spinner("Generando datos — puede tomar 2-3 min..."):
-            from financial_pipeline import run_financial_pipeline
-            run_financial_pipeline(500)
-            from hr_pipeline import run_hr_pipeline
-            run_hr_pipeline()
-    return load_data()
-
-data = load_or_run()
+data = load_data()
+if not data:
+    st.warning("⚠️ Datos no encontrados. Por favor verifica que la carpeta 'output/' contenga los archivos CSV necesarios.")
+    st.stop()
 if not data:
     st.stop()
 
