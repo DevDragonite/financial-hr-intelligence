@@ -1,42 +1,40 @@
-# config.py — Teal & Blue Executive Glass palette
-# Coolors: #3066be · #119da4 · #6d9dc5 · #80ded9 · #aeecef
+# config.py — Dark Earth & Neon Green Executive palette
+# Coolors: #2d2d2a · #353831 · #38423b · #3f5e5a · #20fc8f
 
 COLORS = {
     # ── Fondos ──────────────────────────────────────
-    "bg_gradient": "linear-gradient(135deg, #0a1628 0%, #112240 50%, #0a1628 100%)",
-    "surface": "rgba(17, 157, 164, 0.10)",
-    "surface_hover": "rgba(17, 157, 164, 0.18)",
+    "bg_gradient": "linear-gradient(135deg, #2d2d2a 0%, #353831 50%, #2d2d2a 100%)",
+    "surface": "rgba(63, 94, 90, 0.15)",
+    "surface_hover": "rgba(63, 94, 90, 0.25)",
 
-    # ── Acento principal — Royal Blue ───────────────
-    "primary": "#3066be",
-    "primary_soft": "rgba(48, 102, 190, 0.18)",
+    # ── Acento principal — Neon Green ───────────────
+    "primary": "#20fc8f",
+    "primary_soft": "rgba(32, 252, 143, 0.15)",
 
-    # ── Acento secundario — Teal ────────────────────
-    "secondary": "#119da4",
-    "secondary_soft": "rgba(17, 157, 164, 0.18)",
+    # ── Acento secundario — Dark Teal ───────────────
+    "secondary": "#3f5e5a",
+    "secondary_soft": "rgba(63, 94, 90, 0.18)",
 
-    # ── Acento terciario — Steel Blue ───────────────
-    "accent": "#6d9dc5",
-    "accent_soft": "rgba(109, 157, 197, 0.12)",
-
-    # ── Highlight — Aqua / Mint ─────────────────────
-    "highlight": "#80ded9",
-    "highlight_soft": "rgba(128, 222, 217, 0.12)",
-    "highlight_light": "#aeecef",
+    # ── Surface tones ──────────────────────────────
+    "accent": "#38423b",
+    "accent_soft": "rgba(56, 66, 59, 0.12)",
+    "highlight": "#20fc8f",
+    "highlight_soft": "rgba(32, 252, 143, 0.12)",
+    "highlight_light": "#20fc8f",
 
     # ── Semáforo financiero ──────────────────────────
-    "positive": "#80ded9",
-    "neutral":  "#6d9dc5",
+    "positive": "#20fc8f",
+    "neutral":  "#8aaa9e",
     "negative": "#e05252",
 
     # ── Texto ────────────────────────────────────────
-    "text_primary": "#e8f4fd",
-    "text_muted":   "#6d9dc5",
-    "text_accent":  "#80ded9",
+    "text_primary": "#e8f4ed",
+    "text_muted":   "#8aaa9e",
+    "text_accent":  "#20fc8f",
 
     # ── Bordes ───────────────────────────────────────
-    "border":       "rgba(128, 222, 217, 0.18)",
-    "border_strong":"rgba(128, 222, 217, 0.40)",
+    "border":       "rgba(32, 252, 143, 0.15)",
+    "border_strong":"rgba(32, 252, 143, 0.35)",
 }
 
 PLOTLY_TEMPLATE = {
@@ -45,27 +43,27 @@ PLOTLY_TEMPLATE = {
         "plot_bgcolor":  "rgba(0,0,0,0)",
         "font": {
             "family": "Inter, sans-serif",
-            "color": "#e8f4fd",
+            "color": "#e8f4ed",
             "size": 12,
         },
         "colorway": [
-            "#80ded9", "#3066be", "#119da4",
-            "#6d9dc5", "#aeecef", "#e05252",
+            "#20fc8f", "#3f5e5a", "#8aaa9e",
+            "#5cdb95", "#e05252", "#f0a500",
             "#7b68ee", "#fb923c",
         ],
         "xaxis": {
-            "gridcolor": "rgba(128,222,217,0.06)",
-            "linecolor": "rgba(128,222,217,0.12)",
-            "zerolinecolor": "rgba(128,222,217,0.10)",
+            "gridcolor": "rgba(32,252,143,0.06)",
+            "linecolor": "rgba(32,252,143,0.10)",
+            "zerolinecolor": "rgba(32,252,143,0.08)",
         },
         "yaxis": {
-            "gridcolor": "rgba(128,222,217,0.06)",
-            "linecolor": "rgba(128,222,217,0.12)",
-            "zerolinecolor": "rgba(128,222,217,0.10)",
+            "gridcolor": "rgba(32,252,143,0.06)",
+            "linecolor": "rgba(32,252,143,0.10)",
+            "zerolinecolor": "rgba(32,252,143,0.08)",
         },
         "legend": {
-            "bgcolor":     "rgba(10,22,40,0.7)",
-            "bordercolor": "rgba(128,222,217,0.20)",
+            "bgcolor":     "rgba(45,45,42,0.8)",
+            "bordercolor": "rgba(32,252,143,0.15)",
         },
     }
 }

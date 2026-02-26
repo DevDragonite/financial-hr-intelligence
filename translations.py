@@ -76,6 +76,8 @@ TEXTS = {
         "risk_cvar_text":     "En el peor 5% de escenarios, pérdida esperada promedio:",
         "risk_positive_text": "de simulaciones terminan en positivo",
         "filter_global_title":"Filtros Globales del Dashboard",
+        "dashboard_title":    "Dashboard Interactivo sobre Riesgo Financiero y People Analytics",
+        "dashboard_subtitle": "Análisis integrado CFO + CHRO con evidencia estadística validada",
     },
     # ──────────────────────────────────────────────────────────
     "EN": {
@@ -152,6 +154,8 @@ TEXTS = {
         "risk_cvar_text":     "In the worst 5% of scenarios, expected average loss:",
         "risk_positive_text": "of simulations end in positive territory",
         "filter_global_title":"Dashboard Global Filters",
+        "dashboard_title":    "Interactive Dashboard on Financial Risk & People Analytics",
+        "dashboard_subtitle": "Integrated CFO + CHRO analysis with validated statistical evidence",
     },
     # ──────────────────────────────────────────────────────────
     "BR": {
@@ -228,5 +232,7 @@ TEXTS = {
         "risk_cvar_text":     "Nos piores 5% dos cenários, perda esperada média:",
         "risk_positive_text": "das simulações terminam em território positivo",
         "filter_global_title":"Filtros Globais do Dashboard",
+        "dashboard_title":    "Dashboard Interativo sobre Risco Financeiro e People Analytics",
+        "dashboard_subtitle": "Análise integrada CFO + CHRO com evidência estatística validada",
     },
 }

@@ -1,6 +1,6 @@
 """
 app.py — Financial & HR Intelligence Center
-Executive Glass Design · Teal & Blue Palette · ES/EN/BR
+Executive Glass Design · Dark Earth & Neon Green · ES/EN/BR
 """
 import os
 import warnings
@@ -39,16 +39,16 @@ def inject_css():
         font-family: 'Inter', sans-serif !important;
     }
     .stApp {
-        background: linear-gradient(135deg, #0a1628 0%, #112240 50%, #0a1628 100%);
+        background: linear-gradient(135deg, #2d2d2a 0%, #353831 50%, #2d2d2a 100%);
         background-attachment: fixed;
     }
     /* Glass Card */
     .glass-card {
-        background: rgba(17,157,164,0.08);
+        background: rgba(63,94,90,0.12);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-radius: 20px;
-        border: 1px solid rgba(128,222,217,0.15);
+        border: 1px solid rgba(32,252,143,0.12);
         box-shadow: 0 8px 32px rgba(0,0,0,0.35);
         padding: 1.5rem;
         transition: all 0.3s ease;
@@ -56,15 +56,15 @@ def inject_css():
     }
     .glass-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-        border-color: rgba(128,222,217,0.4);
+        box-shadow: 0 12px 40px rgba(32,252,143,0.12);
+        border-color: rgba(32,252,143,0.35);
     }
     /* Interactive metric card */
     .metric-glass {
-        background: rgba(17,157,164,0.08);
+        background: rgba(63,94,90,0.12);
         backdrop-filter: blur(16px);
         border-radius: 16px;
-        border: 1px solid rgba(128,222,217,0.12);
+        border: 1px solid rgba(32,252,143,0.10);
         box-shadow: 0 6px 24px rgba(0,0,0,0.25);
         padding: 1.2rem;
         transition: all 0.3s ease;
@@ -72,18 +72,18 @@ def inject_css():
     }
     .metric-glass:hover {
         transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 12px 40px rgba(17,157,164,0.25);
-        border-color: rgba(128,222,217,0.4);
+        box-shadow: 0 12px 40px rgba(32,252,143,0.18);
+        border-color: rgba(32,252,143,0.35);
     }
     .metric-glass .metric-value {
         font-size: 2.2rem;
         font-weight: 800;
-        background: -webkit-linear-gradient(45deg, #80ded9, #3066be);
+        background: -webkit-linear-gradient(45deg, #20fc8f, #8aaa9e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
     .metric-glass .metric-label {
-        color: #6d9dc5;
+        color: #8aaa9e;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.06em;
@@ -91,20 +91,20 @@ def inject_css():
         margin-bottom: 0.3rem;
     }
     .metric-glass .metric-delta {
-        color: #80ded9;
+        color: #20fc8f;
         font-size: 0.8rem;
         margin-top: 0.25rem;
     }
-    /* KPI metrics (Streamlit native fallback) */
+    /* KPI metrics (Streamlit native) */
     [data-testid="stMetricValue"] {
         font-size: 2.0rem !important;
         font-weight: 800 !important;
-        background: -webkit-linear-gradient(45deg, #80ded9, #3066be);
+        background: -webkit-linear-gradient(45deg, #20fc8f, #8aaa9e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
     [data-testid="stMetricLabel"] {
-        color: #6d9dc5 !important;
+        color: #8aaa9e !important;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -117,10 +117,10 @@ def inject_css():
     .stTabs [data-baseweb="tab-list"] {
         display: flex;
         gap: 8px;
-        background: rgba(17,157,164,0.06);
+        background: rgba(56,66,59,0.35);
         padding: 6px;
         border-radius: 16px;
-        border: 1px solid rgba(128,222,217,0.12);
+        border: 1px solid rgba(32,252,143,0.10);
         margin-bottom: 1.5rem;
         width: 100%;
         justify-content: space-between;
@@ -129,157 +129,185 @@ def inject_css():
         flex: 1;
         justify-content: center;
         height: 42px;
-        background: rgba(128,222,217,0.04);
+        background: rgba(56,66,59,0.25);
         border-radius: 12px;
         font-weight: 700 !important;
         font-size: 0.82rem !important;
-        color: #6d9dc5;
-        border: 1px solid rgba(128,222,217,0.08);
+        color: #8aaa9e;
+        border: 1px solid rgba(32,252,143,0.06);
         transition: all 0.2s ease;
     }
     .stTabs [aria-selected="true"] {
-        background: rgba(17,157,164,0.18) !important;
-        color: #80ded9 !important;
-        border-color: rgba(17,157,164,0.5) !important;
-        box-shadow: 0 4px 15px rgba(17,157,164,0.2);
+        background: rgba(32,252,143,0.12) !important;
+        color: #20fc8f !important;
+        border-color: rgba(32,252,143,0.4) !important;
+        box-shadow: 0 4px 15px rgba(32,252,143,0.15);
     }
     .stTabs [data-baseweb="tab-highlight"] { display: none; }
     /* Insight cards */
     .insight-card {
-        border-left: 5px solid #119da4;
-        background: rgba(17,157,164,0.12);
+        border-left: 5px solid #20fc8f;
+        background: rgba(63,94,90,0.15);
         border-radius: 0 8px 8px 0;
         padding: 1.2rem 1.5rem;
         margin-bottom: 1.5rem;
     }
     /* Pillar cards */
     .pillar-card {
-        background: rgba(17,157,164,0.08);
+        background: rgba(63,94,90,0.12);
         backdrop-filter: blur(16px);
         border-radius: 16px;
-        border: 1px solid rgba(128,222,217,0.15);
+        border: 1px solid rgba(32,252,143,0.12);
         box-shadow: 0 6px 24px rgba(0,0,0,0.25);
-        border-left: 5px solid #119da4;
+        border-left: 5px solid #20fc8f;
         padding: 1.5rem;
         margin-bottom: 1rem;
         transition: all 0.3s ease;
     }
     .pillar-card:hover {
         transform: translateX(8px) translateY(-3px);
-        box-shadow: 0 10px 36px rgba(17,157,164,0.2);
-        border-color: rgba(128,222,217,0.4);
+        box-shadow: 0 10px 36px rgba(32,252,143,0.15);
+        border-color: rgba(32,252,143,0.3);
     }
     /* KPI top-border cards */
     .kpi-card {
-        background: rgba(17,157,164,0.08);
+        background: rgba(63,94,90,0.10);
         backdrop-filter: blur(16px);
         border-radius: 16px;
-        border: 1px solid rgba(128,222,217,0.12);
+        border: 1px solid rgba(32,252,143,0.10);
         box-shadow: 0 6px 24px rgba(0,0,0,0.25);
         padding: 1.2rem;
         transition: all 0.3s ease;
     }
     .kpi-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 40px rgba(17,157,164,0.2);
-        border-color: rgba(128,222,217,0.35);
+        box-shadow: 0 12px 40px rgba(32,252,143,0.15);
+        border-color: rgba(32,252,143,0.3);
     }
-    .kpi-teal   { border-top: 3px solid #119da4; }
+    .kpi-green  { border-top: 3px solid #20fc8f; }
     .kpi-red    { border-top: 3px solid #e05252; }
-    .kpi-blue   { border-top: 3px solid #3066be; }
-    .kpi-mint   { border-top: 3px solid #80ded9; }
+    .kpi-teal   { border-top: 3px solid #3f5e5a; }
+    .kpi-gold   { border-top: 3px solid #f0a500; }
     /* Plotly iframe */
     [data-testid="stPlotlyChart"] {
         padding: 0 !important;
         overflow: hidden !important;
         border-radius: 16px;
-        border: 1px solid rgba(128,222,217,0.12);
+        border: 1px solid rgba(32,252,143,0.10);
     }
     [data-testid="stPlotlyChart"] iframe {
         max-width: 100% !important;
     }
     /* Sidebar */
     [data-testid="stSidebar"] {
-        background: rgba(10,22,40,0.95) !important;
-        border-right: 1px solid rgba(128,222,217,0.12);
+        background: rgba(45,45,42,0.95) !important;
+        border-right: 1px solid rgba(32,252,143,0.10);
     }
     .sidebar-footer {
         margin-top: 40px;
         padding-top: 1rem;
-        border-top: 1px solid rgba(128,222,217,0.15);
-        color: #6d9dc5;
+        border-top: 1px solid rgba(32,252,143,0.12);
+        color: #8aaa9e;
         font-size: 0.75rem;
         text-align: center;
     }
-    /* Language selector flag */
-    .lang-btn {
+    /* Language selector */
+    .lang-selector {
+        display: flex;
+        gap: 6px;
+    }
+    .lang-pill {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(17,157,164,0.12);
-        border: 1px solid rgba(128,222,217,0.2);
+        background: rgba(63,94,90,0.2);
+        border: 1px solid rgba(32,252,143,0.15);
         border-radius: 10px;
-        padding: 6px 14px;
-        color: #80ded9;
+        padding: 5px 14px;
+        color: #8aaa9e;
         font-weight: 600;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         cursor: pointer;
+        text-decoration: none;
         transition: all 0.2s ease;
     }
-    .lang-btn:hover {
-        background: rgba(17,157,164,0.25);
-        border-color: rgba(128,222,217,0.4);
+    .lang-pill:hover {
+        background: rgba(32,252,143,0.15);
+        border-color: rgba(32,252,143,0.4);
+        color: #20fc8f;
     }
-    h1,h2,h3,h4 { color: #e8f4fd; }
-    p, li { color: #aeecef; }
-    .stMarkdown p { color: #aeecef; }
+    .lang-active {
+        background: rgba(32,252,143,0.12);
+        border: 1px solid rgba(32,252,143,0.35);
+        border-radius: 10px;
+        padding: 5px 14px;
+        color: #20fc8f;
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    h1,h2,h3,h4 { color: #e8f4ed; }
+    p, li { color: #c4d8cd; }
+    .stMarkdown p { color: #c4d8cd; }
+    /* Storytelling card */
+    .story-card {
+        background: rgba(63,94,90,0.10);
+        border-left: 5px solid #20fc8f;
+        border-radius: 0 16px 16px 0;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    .story-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(32,252,143,0.1);
+    }
+    .story-card h4 { color: #20fc8f; margin: 0 0 0.6rem 0; }
+    .story-card p { color: #c4d8cd; line-height: 1.7; margin: 0; }
     </style>
     """, unsafe_allow_html=True)
 
 inject_css()
 
-# ─── Language selector with SVG flags ─────────────────────────
-def render_language_selector():
-    flag_urls = {
-        "ES": "https://flagcdn.com/w40/ve.png",
-        "EN": "https://flagcdn.com/w40/us.png",
-        "BR": "https://flagcdn.com/w40/br.png",
-    }
-    labels = {"ES": "Español", "EN": "English", "BR": "Português"}
+# ─── Language selector — flag + current, only 2 other options ─
+FLAG_URLS = {
+    "ES": "https://flagcdn.com/w40/ve.png",
+    "EN": "https://flagcdn.com/w40/us.png",
+    "BR": "https://flagcdn.com/w40/br.png",
+}
+LANG_NAMES = {"ES": "Español", "EN": "English", "BR": "Português"}
 
-    col_logo, col_space, col_lang = st.columns([1, 6, 1])
+def render_language_selector():
+    cur = st.session_state.lang
+    others = [l for l in ["ES","EN","BR"] if l != cur]
+
+    _, col_space, col_lang = st.columns([1, 5, 2])
     with col_lang:
-        # Inject CSS to show flags in selectbox via background-image hack
-        current_flag = flag_urls[st.session_state.lang]
+        # Show current language as active pill, then buttons for the other 2
+        cur_flag = FLAG_URLS[cur]
         st.markdown(f"""
-        <style>
-        div[data-testid="stSelectbox"] > div > div > div {{
-            background: rgba(17,157,164,0.12) !important;
-            border: 1px solid rgba(128,222,217,0.2) !important;
-            border-radius: 10px !important;
-            color: #80ded9 !important;
-            font-weight: 600 !important;
-        }}
-        </style>
+        <div style="display:flex;align-items:center;gap:8px;justify-content:flex-end;margin-top:4px;">
+            <div class="lang-active">
+                <img src="{cur_flag}" style="height:16px;border-radius:2px;">
+                {cur} — {LANG_NAMES[cur]}
+            </div>
+        </div>
         """, unsafe_allow_html=True)
 
-        def format_lang(code):
-            return f"  {code} — {labels[code]}"
-
-        choice = st.selectbox(
-            "", list(flag_urls.keys()),
-            format_func=format_lang,
-            index=list(flag_urls.keys()).index(st.session_state.lang),
-            key="lang_select", label_visibility="collapsed"
-        )
-        if choice != st.session_state.lang:
-            st.session_state.lang = choice
-            st.rerun()
-
-    # Show active flag image
-    with col_logo:
-        flag = flag_urls[st.session_state.lang]
-        st.markdown(f'<img src="{flag}" style="height:24px;border-radius:3px;margin-top:10px;">', unsafe_allow_html=True)
+        # Two buttons for the other languages
+        b1, b2 = st.columns(2)
+        with b1:
+            flag1 = FLAG_URLS[others[0]]
+            if st.button(f"  {others[0]}", key=f"lang_{others[0]}", use_container_width=True):
+                st.session_state.lang = others[0]
+                st.rerun()
+        with b2:
+            flag2 = FLAG_URLS[others[1]]
+            if st.button(f"  {others[1]}", key=f"lang_{others[1]}", use_container_width=True):
+                st.session_state.lang = others[1]
+                st.rerun()
 
 render_language_selector()
 
@@ -317,14 +345,31 @@ arima_df = data["arima"]
 mc_df = data["mc"]
 hr_df = data["hr"]
 
-# ─── Sidebar (only nav + sims + download) ─────────────────────
+# ─── Sidebar — nav uses session state to avoid desync ─────────
 st.sidebar.title(f"💼 {t('app_title')}")
-nav = st.sidebar.radio("", [t("nav_intro"), t("nav_dashboard")], key="nav")
+
+# Fix: use session state for nav to prevent desync on language change
+if "nav_page" not in st.session_state:
+    st.session_state.nav_page = t("nav_intro")
+
+nav_options = [t("nav_intro"), t("nav_dashboard")]
+# When lang changes, the stored nav_page key text may be stale. Reset to valid.
+if st.session_state.nav_page not in nav_options:
+    st.session_state.nav_page = nav_options[0]
+
+nav = st.sidebar.radio(
+    "nav_label", nav_options,
+    index=nav_options.index(st.session_state.nav_page),
+    key="nav_radio",
+    label_visibility="collapsed"
+)
+# Sync back
+st.session_state.nav_page = nav
+
 st.sidebar.markdown("---")
 
 n_sims = st.sidebar.slider(t("filter_sims"), 1000, 10000, 5000, 500)
 
-# CSV download
 st.sidebar.download_button(
     t("download_btn"),
     hr_df.to_csv(index=False).encode(),
@@ -343,39 +388,47 @@ def apply_template(fig, height=420):
     fig.update_layout(
         paper_bgcolor=tpl["paper_bgcolor"],
         plot_bgcolor=tpl["plot_bgcolor"],
-        font=dict(family="Inter", color="#e8f4fd", size=12),
+        font=dict(family="Inter", color="#e8f4ed", size=12),
         height=height,
         margin=dict(l=20, r=20, t=40, b=20),
-        legend=dict(bgcolor="rgba(10,22,40,0.7)", bordercolor="rgba(128,222,217,0.2)"),
+        legend=dict(bgcolor="rgba(45,45,42,0.8)", bordercolor="rgba(32,252,143,0.15)"),
     )
-    fig.update_xaxes(gridcolor="rgba(128,222,217,0.06)", linecolor="rgba(128,222,217,0.12)")
-    fig.update_yaxes(gridcolor="rgba(128,222,217,0.06)", linecolor="rgba(128,222,217,0.12)")
+    fig.update_xaxes(gridcolor="rgba(32,252,143,0.06)", linecolor="rgba(32,252,143,0.10)")
+    fig.update_yaxes(gridcolor="rgba(32,252,143,0.06)", linecolor="rgba(32,252,143,0.10)")
     return fig
 
 def create_insight(hallazgo, impacto, accion, prediccion):
     st.markdown(f"""
     <div style="margin-bottom:1.5rem;padding:1.4rem;
-         border-left:5px solid #119da4;
-         background:rgba(17,157,164,0.12);
+         border-left:5px solid #20fc8f;
+         background:rgba(63,94,90,0.15);
          border-radius:0 8px 8px 0;">
-        <h4 style="color:#80ded9;margin:0 0 0.5rem 0;">🔍 {t('finding')}: {hallazgo}</h4>
-        <p style="color:#e8f4fd;margin:0.3rem 0;">💥 <b>{t('impact')}:</b> {impacto}</p>
-        <p style="color:#e8f4fd;margin:0.3rem 0;">✅ <b>{t('action')}:</b> {accion}</p>
-        <div style="background:rgba(17,157,164,0.2);padding:0.7rem;border-radius:6px;margin-top:0.5rem;">
+        <h4 style="color:#20fc8f;margin:0 0 0.5rem 0;">🔍 {t('finding')}: {hallazgo}</h4>
+        <p style="color:#e8f4ed;margin:0.3rem 0;">💥 <b>{t('impact')}:</b> {impacto}</p>
+        <p style="color:#e8f4ed;margin:0.3rem 0;">✅ <b>{t('action')}:</b> {accion}</p>
+        <div style="background:rgba(32,252,143,0.08);padding:0.7rem;border-radius:6px;margin-top:0.5rem;">
             📈 <b>{t('prediction')}:</b> {prediccion}
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-def metric_card(label, value, delta, border_class="kpi-teal"):
+def metric_card(label, value, delta, border_class="kpi-green"):
     st.markdown(f"""
     <div class="kpi-card {border_class}">
-        <div class="metric-label" style="color:#6d9dc5;font-weight:600;text-transform:uppercase;
+        <div style="color:#8aaa9e;font-weight:600;text-transform:uppercase;
              letter-spacing:0.06em;font-size:0.72rem;margin-bottom:0.3rem;">{label}</div>
-        <div class="metric-value" style="font-size:2rem;font-weight:800;
-             background:-webkit-linear-gradient(45deg,#80ded9,#3066be);
+        <div style="font-size:2rem;font-weight:800;
+             background:-webkit-linear-gradient(45deg,#20fc8f,#8aaa9e);
              -webkit-background-clip:text;-webkit-text-fill-color:transparent;">{value}</div>
-        <div style="color:#6d9dc5;font-size:0.78rem;margin-top:0.25rem;">↗ {delta}</div>
+        <div style="color:#8aaa9e;font-size:0.78rem;margin-top:0.25rem;">↗ {delta}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+def story_card(emoji, title, body):
+    st.markdown(f"""
+    <div class="story-card">
+        <h4>{emoji} {title}</h4>
+        <p>{body}</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -385,22 +438,22 @@ def metric_card(label, value, delta, border_class="kpi-teal"):
 if nav == t("nav_intro"):
     st.markdown(f"""
     <div style="text-align:center;padding:3rem 1rem 2rem;
-         background:linear-gradient(135deg,rgba(17,157,164,0.15),rgba(48,102,190,0.15));
-         border-radius:24px;border:1px solid rgba(128,222,217,0.15);
+         background:linear-gradient(135deg,rgba(63,94,90,0.18),rgba(56,66,59,0.2));
+         border-radius:24px;border:1px solid rgba(32,252,143,0.12);
          margin-bottom:2rem;">
         <h1 style="font-size:2.6rem;font-weight:800;
-             background:-webkit-linear-gradient(45deg,#80ded9,#3066be);
+             background:-webkit-linear-gradient(45deg,#20fc8f,#8aaa9e);
              -webkit-background-clip:text;-webkit-text-fill-color:transparent;
              margin-bottom:1rem;">
             💼 {t('app_title')}
         </h1>
-        <h3 style="color:#6d9dc5;font-weight:400;font-size:1.1rem;">
+        <h3 style="color:#8aaa9e;font-weight:400;font-size:1.1rem;">
             {t('intro_headline')}
         </h3>
-        <p style="color:#aeecef;max-width:700px;margin:1rem auto;font-size:1rem;line-height:1.6;">
+        <p style="color:#c4d8cd;max-width:700px;margin:1rem auto;font-size:1rem;line-height:1.6;">
             {t('intro_p1')}
         </p>
-        <p style="color:#6d9dc5;font-size:0.9rem;margin-top:1rem;">
+        <p style="color:#8aaa9e;font-size:0.9rem;margin-top:1rem;">
             {t('intro_p2')}
         </p>
     </div>
@@ -410,17 +463,17 @@ if nav == t("nav_intro"):
     with c1:
         st.markdown(f"""
         <div class="pillar-card">
-            <h3 style="color:#80ded9;margin:0 0 0.5rem;">{t('intro_card1_title')}</h3>
-            <p style="color:#6d9dc5;margin:0;">{t('intro_card1_desc')}</p>
+            <h3 style="color:#20fc8f;margin:0 0 0.5rem;">{t('intro_card1_title')}</h3>
+            <p style="color:#8aaa9e;margin:0;">{t('intro_card1_desc')}</p>
         </div>""", unsafe_allow_html=True)
     with c2:
         st.markdown(f"""
         <div class="pillar-card">
-            <h3 style="color:#80ded9;margin:0 0 0.5rem;">{t('intro_card2_title')}</h3>
-            <p style="color:#6d9dc5;margin:0;">{t('intro_card2_desc')}</p>
+            <h3 style="color:#20fc8f;margin:0 0 0.5rem;">{t('intro_card2_title')}</h3>
+            <p style="color:#8aaa9e;margin:0;">{t('intro_card2_desc')}</p>
         </div>""", unsafe_allow_html=True)
 
-    # ── Interactive Impact Metric Cards ──
+    # Interactive Impact Metric Cards
     st.markdown(f"### 📊 {t('impact_metrics')}")
     m1,m2,m3,m4,m5 = st.columns(5)
     with m1:
@@ -443,7 +496,20 @@ if nav == t("nav_intro"):
 # VISTA 2: DASHBOARD
 # ═══════════════════════════════════════════════════════════════
 else:
-    # ── Dashboard filters (inside dashboard, visible to all tabs) ──
+    # Dashboard title
+    st.markdown(f"""
+    <h2 style="text-align:center;margin-bottom:0.2rem;
+         background:-webkit-linear-gradient(45deg,#20fc8f,#8aaa9e);
+         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+         font-weight:800;font-size:1.6rem;">
+        📊 {t('dashboard_title')}
+    </h2>
+    <p style="text-align:center;color:#8aaa9e;font-size:0.9rem;margin-bottom:1.5rem;">
+        {t('dashboard_subtitle')}
+    </p>
+    """, unsafe_allow_html=True)
+
+    # Dashboard filters
     tickers_avail = list(arima_df["ticker"].unique()) if "ticker" in arima_df.columns else ["AAPL","MSFT","GOOGL","AMZN"]
     depts = sorted(hr_df["Department"].unique()) if "Department" in hr_df.columns else []
     levels = sorted(hr_df["JobLevel"].unique()) if "JobLevel" in hr_df.columns else []
@@ -459,14 +525,14 @@ else:
 
     st.markdown("---")
 
-    # ── Filtered data ──
+    # Filtered data
     arima_filt = arima_df[arima_df["ticker"].isin(sel_tickers)] if sel_tickers else arima_df
     hr_filt = hr_df[
         hr_df["Department"].isin(sel_depts) &
         hr_df["JobLevel"].astype(str).isin(sel_levels)
     ] if sel_depts and sel_levels else hr_df
 
-    # ── Revenue 12M ──
+    # Revenue 12M
     rev_12m = "N/A"
     if not arima_filt.empty and not prices.empty:
         try:
@@ -486,20 +552,20 @@ else:
         pay_gap_val = f"{abs((m_sal-f_sal)/max(m_sal,f_sal)*100):.1f}%"
     except: pass
 
-    # ── Interactive KPI Cards ──
+    # Interactive KPI Cards
     k1,k2,k3,k4 = st.columns(4)
     with k1:
-        metric_card(t("kpi_revenue"), rev_12m, "ARIMA 12M", "kpi-teal")
+        metric_card(t("kpi_revenue"), rev_12m, "ARIMA 12M", "kpi-green")
     with k2:
         metric_card(t("kpi_var"), var_val, "Percentil 5", "kpi-red")
     with k3:
-        metric_card(t("kpi_attrition"), att_rate, "16.1% global", "kpi-blue")
+        metric_card(t("kpi_attrition"), att_rate, "16.1% global", "kpi-teal")
     with k4:
-        metric_card(t("kpi_gap"), pay_gap_val, "p=0.22", "kpi-mint")
+        metric_card(t("kpi_gap"), pay_gap_val, "p=0.22", "kpi-gold")
 
     st.markdown("---")
 
-    # ── Tabs ──
+    # Tabs
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         t("tab_forecast"), t("tab_risk"),
         t("tab_people"), t("tab_equity"), t("tab_conclusions")
@@ -519,18 +585,18 @@ else:
             fig1 = go.Figure()
             if not hist.empty:
                 fig1.add_trace(go.Scatter(x=hist.index, y=hist.values, name="Historical",
-                    line=dict(color="#80ded9", width=2)))
+                    line=dict(color="#20fc8f", width=2)))
             if not sub.empty:
                 fig1.add_trace(go.Scatter(x=sub["date"], y=sub["upper_95"], name=t("confidence_95"),
                     line=dict(width=0), showlegend=False))
                 fig1.add_trace(go.Scatter(x=sub["date"], y=sub["lower_95"], name=t("confidence_95"),
-                    fill="tonexty", fillcolor="rgba(17,157,164,0.12)", line=dict(width=0)))
+                    fill="tonexty", fillcolor="rgba(32,252,143,0.08)", line=dict(width=0)))
                 fig1.add_trace(go.Scatter(x=sub["date"], y=sub["upper_80"], name=t("confidence_80"),
                     line=dict(width=0), showlegend=False))
                 fig1.add_trace(go.Scatter(x=sub["date"], y=sub["lower_80"], name=t("confidence_80"),
-                    fill="tonexty", fillcolor="rgba(17,157,164,0.22)", line=dict(width=0)))
+                    fill="tonexty", fillcolor="rgba(32,252,143,0.15)", line=dict(width=0)))
                 fig1.add_trace(go.Scatter(x=sub["date"], y=sub["forecast"], name="Forecast",
-                    line=dict(color="#3066be", width=2, dash="dot")))
+                    line=dict(color="#f0a500", width=2, dash="dot")))
             apply_template(fig1)
             st.plotly_chart(fig1, use_container_width=True)
 
@@ -540,7 +606,6 @@ else:
             estadísticamente esperado de precios en los próximos 12 meses.</p></div>""",
             unsafe_allow_html=True)
 
-        # Retornos proyectados
         st.markdown(f"### {t('projected_return')}")
         ret_data = []
         for tk in (sel_tickers if sel_tickers else tickers_avail):
@@ -554,13 +619,12 @@ else:
             ret_df = pd.DataFrame(ret_data)
             fig2 = go.Figure(go.Bar(
                 x=ret_df["Ticker"], y=ret_df["Return"],
-                marker_color=["#80ded9" if r>0 else "#e05252" for r in ret_df["Return"]],
+                marker_color=["#20fc8f" if r>0 else "#e05252" for r in ret_df["Return"]],
                 text=[f"{r:.1f}%" for r in ret_df["Return"]], textposition="outside"
             ))
             apply_template(fig2, height=340)
             st.plotly_chart(fig2, use_container_width=True)
 
-        # Correlación
         st.markdown(f"### {t('correlation_matrix')}")
         if not prices.empty:
             filt_prices = prices[[c for c in sel_tickers if c in prices.columns]] if sel_tickers else prices
@@ -568,7 +632,7 @@ else:
             corr_mat = monthly_ret.corr()
             fig3 = go.Figure(go.Heatmap(
                 z=corr_mat.values, x=corr_mat.columns, y=corr_mat.index,
-                colorscale=[[0,"#0a1628"],[0.5,"#119da4"],[1,"#80ded9"]],
+                colorscale=[[0,"#2d2d2a"],[0.5,"#3f5e5a"],[1,"#20fc8f"]],
                 zmin=-1, zmax=1, text=corr_mat.round(2).values,
                 texttemplate="%{text}", hoverongaps=False
             ))
@@ -595,7 +659,7 @@ else:
             fig_mc = go.Figure()
             fig_mc.add_trace(go.Histogram(
                 x=mc_df["return_pct"], nbinsx=80,
-                marker_color="#119da4", opacity=0.75, name="Simulations"
+                marker_color="#3f5e5a", opacity=0.75, name="Simulations"
             ))
             var_x = mc_df["return_pct"][mc_df["return_pct"] <= var_95]
             fig_mc.add_trace(go.Histogram(
@@ -604,15 +668,14 @@ else:
             ))
             for val, color, label in [
                 (var_95, "#e05252", f"VaR 95%: {var_95:.1f}%"),
-                (p50, "#6d9dc5", f"{t('base_case')}: {p50:.1f}%"),
-                (p95, "#80ded9", f"{t('best_case')}: {p95:.1f}%"),
+                (p50, "#8aaa9e", f"{t('base_case')}: {p50:.1f}%"),
+                (p95, "#20fc8f", f"{t('best_case')}: {p95:.1f}%"),
             ]:
                 fig_mc.add_vline(x=val, line_color=color, line_dash="dash",
                     annotation_text=label, annotation_position="top")
             apply_template(fig_mc)
             st.plotly_chart(fig_mc, use_container_width=True)
 
-            # Fan chart
             st.markdown(f"### {t('mc_fan_chart')}")
             months = list(range(13))
             p5_path  = [0] + [var_95*i/12 for i in range(1,13)]
@@ -621,25 +684,24 @@ else:
 
             fig_fan = go.Figure()
             fig_fan.add_trace(go.Scatter(x=months, y=p95_path, name=t("best_case"),
-                line=dict(color="#80ded9", width=2), fill=None))
+                line=dict(color="#20fc8f", width=2), fill=None))
             fig_fan.add_trace(go.Scatter(x=months, y=p5_path, name=t("worst_case"),
                 line=dict(color="#e05252", width=2),
-                fill="tonexty", fillcolor="rgba(17,157,164,0.10)"))
+                fill="tonexty", fillcolor="rgba(63,94,90,0.12)"))
             fig_fan.add_trace(go.Scatter(x=months, y=p50_path, name=t("base_case"),
-                line=dict(color="#6d9dc5", width=2, dash="dot")))
-            fig_fan.add_hline(y=0, line_color="rgba(128,222,217,0.3)", line_dash="dash")
+                line=dict(color="#8aaa9e", width=2, dash="dot")))
+            fig_fan.add_hline(y=0, line_color="rgba(32,252,143,0.2)", line_dash="dash")
             apply_template(fig_fan)
             st.plotly_chart(fig_fan, use_container_width=True)
 
-            # Risk summary card
             st.markdown(f"""
             <div class="glass-card">
-                <h3 style="color:#80ded9;margin-bottom:1rem;">⚠️ {t('risk_summary_title')}</h3>
+                <h3 style="color:#20fc8f;margin-bottom:1rem;">⚠️ {t('risk_summary_title')}</h3>
                 <p>📉 <b>{t('risk_var_text')}:</b>
                    <span style="color:#e05252;font-size:1.3rem;font-weight:800;">{var_95:.1f}%</span></p>
                 <p>🔴 <b>{t('risk_cvar_text')}:</b>
                    <span style="color:#e05252;font-size:1.3rem;font-weight:800;">{cvar:.1f}%</span></p>
-                <p>✅ <span style="color:#80ded9;font-weight:700;">{pct_pos:.1f}%</span>
+                <p>✅ <span style="color:#20fc8f;font-weight:700;">{pct_pos:.1f}%</span>
                    {t('risk_positive_text')}</p>
             </div>""", unsafe_allow_html=True)
 
@@ -654,18 +716,17 @@ else:
             dept_att = hr_filt.groupby("Department")["Attrition_num"].mean().reset_index()
             dept_att["pct"] = dept_att["Attrition_num"] * 100
             dept_att["color"] = dept_att["pct"].apply(
-                lambda x: "#e05252" if x>20 else ("#6d9dc5" if x>10 else "#80ded9"))
+                lambda x: "#e05252" if x>20 else ("#f0a500" if x>10 else "#20fc8f"))
             fig_att = go.Figure(go.Bar(
                 x=dept_att["pct"], y=dept_att["Department"], orientation="h",
                 marker_color=dept_att["color"],
                 text=[f"{v:.1f}%" for v in dept_att["pct"]], textposition="outside"
             ))
-            fig_att.add_vline(x=13, line_dash="dash", line_color="#aeecef",
+            fig_att.add_vline(x=13, line_dash="dash", line_color="#8aaa9e",
                 annotation_text=t("benchmark_label"))
             apply_template(fig_att, height=320)
             st.plotly_chart(fig_att, use_container_width=True)
 
-            # Top factores
             st.markdown(f"### {t('top_factors')}")
             from scipy import stats as scipy_stats
             numeric_cols = ["Age","MonthlyIncome","TotalWorkingYears","YearsAtCompany",
@@ -683,7 +744,7 @@ else:
             corr_res = pd.DataFrame(corr_list).sort_values("r", key=abs, ascending=True).tail(10)
             fig_top = go.Figure(go.Bar(
                 x=corr_res["r"], y=corr_res["Feature"], orientation="h",
-                marker_color=["#e05252" if r>0 else "#80ded9" for r in corr_res["r"]],
+                marker_color=["#e05252" if r>0 else "#20fc8f" for r in corr_res["r"]],
                 text=[f"{r:.3f}" for r in corr_res["r"]], textposition="outside"
             ))
             apply_template(fig_top, height=380)
@@ -691,14 +752,13 @@ else:
             st.markdown(f'<div class="insight-card"><p>🔍 <b>Insight:</b> OverTime y MonthlyIncome (bajo) son los principales predictores de attrition. '
                 'Los empleados con horas extra tienen 2.4× más probabilidad de renunciar.</p></div>', unsafe_allow_html=True)
 
-            # Heatmap satisfacción
             st.markdown(f"### {t('satisfaction_heatmap')}")
             sat_cols = [c for c in ["JobSatisfaction","EnvironmentSatisfaction","WorkLifeBalance"] if c in hr_filt.columns]
             if sat_cols:
                 sat_dept = hr_filt.groupby("Department")[sat_cols].mean().round(2)
                 fig_heat = go.Figure(go.Heatmap(
                     z=sat_dept.values, x=sat_cols, y=sat_dept.index,
-                    colorscale=[[0,"#e05252"],[0.5,"#6d9dc5"],[1,"#80ded9"]],
+                    colorscale=[[0,"#e05252"],[0.5,"#f0a500"],[1,"#20fc8f"]],
                     zmin=1, zmax=4, text=sat_dept.values,
                     texttemplate="%{text:.2f}", hoverongaps=False
                 ))
@@ -716,7 +776,7 @@ else:
             dept_gender = hr_filt.groupby(["Department","Gender"])["MonthlyIncome"].mean().reset_index()
             fig_gap = px.bar(dept_gender, x="Department", y="MonthlyIncome", color="Gender",
                 barmode="group",
-                color_discrete_map={"Male":"#3066be","Female":"#80ded9"},
+                color_discrete_map={"Male":"#3f5e5a","Female":"#20fc8f"},
                 labels={"MonthlyIncome":t("monthly_income")})
             from scipy import stats as sp
             for dept in hr_filt["Department"].unique():
@@ -727,14 +787,14 @@ else:
                     _, p = sp.ttest_ind(m,f)
                     ann = "* p<0.05" if p<0.05 else f"p={p:.2f}"
                     fig_gap.add_annotation(x=dept, y=max(m.mean(),f.mean())*1.05,
-                        text=ann, showarrow=False, font=dict(color="#80ded9",size=11))
+                        text=ann, showarrow=False, font=dict(color="#20fc8f",size=11))
             apply_template(fig_gap)
             st.plotly_chart(fig_gap, use_container_width=True)
 
             st.markdown(f"### {t('scatter_income')}")
             fig_sc = px.scatter(
                 hr_filt, x="TotalWorkingYears", y="MonthlyIncome", color="Gender",
-                color_discrete_map={"Male":"#3066be","Female":"#80ded9"},
+                color_discrete_map={"Male":"#3f5e5a","Female":"#20fc8f"},
                 trendline="ols",
                 labels={"TotalWorkingYears":t("total_exp"),"MonthlyIncome":t("monthly_income")},
                 opacity=0.6
@@ -747,7 +807,7 @@ else:
             st.markdown(f"### {t('box_dist')}")
             if len(sel_depts) > 0:
                 fig_box = px.box(hr_filt, x="Department", y="MonthlyIncome", color="Gender",
-                    color_discrete_map={"Male":"#3066be","Female":"#80ded9"},
+                    color_discrete_map={"Male":"#3f5e5a","Female":"#20fc8f"},
                     labels={"MonthlyIncome":t("monthly_income")})
                 m_all = hr_filt[hr_filt["Gender"]=="Male"]["MonthlyIncome"].dropna()
                 f_all = hr_filt[hr_filt["Gender"]=="Female"]["MonthlyIncome"].dropna()
@@ -756,18 +816,16 @@ else:
                 fig_box.add_annotation(
                     text=f"{t('t_test_result')}: {sig_label} ({t('p_value_label')}={pval:.4f}, α=0.05)",
                     xref="paper", yref="paper", x=0.5, y=1.08,
-                    showarrow=False, font=dict(color="#80ded9", size=12)
+                    showarrow=False, font=dict(color="#20fc8f", size=12)
                 )
                 apply_template(fig_box)
                 st.plotly_chart(fig_box, use_container_width=True)
 
     # ══════════════════════════════════
-    # TAB 5: Conclusiones
+    # TAB 5: Conclusiones (Storytelling)
     # ══════════════════════════════════
     with tab5:
-        # CFO Section
-        st.markdown(f"## {t('cfo_section')}")
-
+        # ── Compute real values ──
         arima_best_ticker = "MSFT"
         try:
             ret_df2 = []
@@ -788,81 +846,98 @@ else:
 
         var_v = mc_df["return_pct"].quantile(0.05) if not mc_df.empty else -18.8
         cvar_v = mc_df[mc_df["return_pct"]<=var_v]["return_pct"].mean() if not mc_df.empty else -25.5
-
-        create_insight(
-            f"El modelo ARIMA proyecta retorno de {arima_best_ret:.1f}% para {arima_best_ticker} en 12 meses",
-            f"Oportunidad de rendimiento superior al mercado con {arima_best_ticker}",
-            f"Rebalancear portfolio sobreponderando {arima_best_ticker}: menor volatilidad y mayor proyección",
-            f"Retorno ajustado por riesgo proyectado: {arima_best_ret*0.7:.1f}% (Sharpe > 1)"
-        )
-        create_insight(
-            f"VaR 95%: pérdida máxima de {abs(var_v):.1f}% en 12 meses bajo distribución normal multivariada",
-            f"CVaR (peor 5% de escenarios): {abs(cvar_v):.1f}% — riesgo de cola cuantificado",
-            "Diversificar con activos de baja correlación (bonos, commodities) para comprimir el CVaR",
-            f"Reducción del riesgo de cola estimada en 15-20% con diversificación óptima"
-        )
-
-        st.markdown("---")
-        st.markdown(f"## {t('chro_section')}")
+        pct_pos_v = (mc_df["return_pct"] > 0).mean() * 100 if not mc_df.empty else 75.7
 
         sales_att = float(hr_df[hr_df["Department"]=="Sales"]["Attrition_num"].mean()*100) if "Attrition_num" in hr_df.columns else 20.6
         global_att = float(hr_df["Attrition_num"].mean()*100) if "Attrition_num" in hr_df.columns else 16.1
-        pay_gap_val_str = pay_gap_val
-
-        create_insight(
-            f"Ventas tiene attrition del {sales_att:.1f}%, {sales_att-13:.1f} puntos sobre benchmark tech (13%)",
-            f"Costo estimado por reemplazante: ~$15,000 USD · {int((sales_att-13)/100 * len(hr_df[hr_df['Department']=='Sales']))} empleados en riesgo",
-            "Plan de retención urgente: compensación variable, desarrollo profesional y reducción de sobretiempo",
-            f"Reducción al 13% en 6 meses = ahorro estimado de $150,000+ USD en costos de reemplazo"
-        )
-
         m_avg = hr_df[hr_df["Gender"]=="Male"]["MonthlyIncome"].mean() if "Gender" in hr_df.columns else 6380
         f_avg = hr_df[hr_df["Gender"]=="Female"]["MonthlyIncome"].mean() if "Gender" in hr_df.columns else 6686
         pval_gap = 0.2222
-        gap_direction = "mujeres ganan" if f_avg > m_avg else "hombres ganan"
+        gap_dir = "mujeres" if f_avg > m_avg else "hombres"
 
-        create_insight(
-            f"Brecha salarial global: {pay_gap_val_str} — {gap_direction} en promedio (p={pval_gap}, α=0.05)",
-            f"Brecha estadísticamente NO significativa — diferencias atribuibles a JobLevel y experiencia",
-            "Auditoría salarial por JobLevel y TotalWorkingYears para identificar inequidades controladas",
-            f"Mantener paridad: índice de satisfacción laboral +0.3 pts proyectado en 12 meses"
-        )
+        # ── CFO STORYTELLING ──
+        st.markdown(f"## 💰 {t('cfo_section')}")
+
+        story_card("📈", "La Historia del Portfolio",
+            f"Imaginemos que un CFO invierte de forma equilibrada en AAPL, MSFT, GOOGL y AMZN. "
+            f"Nuestro modelo ARIMA — el estándar de la industria para pronóstico de series temporales — "
+            f"analiza 5 años de historia y proyecta que <b>{arima_best_ticker}</b> es la estrella del "
+            f"portafolio con un retorno esperado de <b>{arima_best_ret:.1f}%</b> en 12 meses. Esto no es "
+            f"una corazonada: es el resultado de calibrar automáticamente los parámetros (p,d,q) después "
+            f"de verificar la estacionariedad con el test ADF.")
+
+        story_card("🎲", "5,000 Futuros Posibles",
+            f"¿Pero qué tan riesgoso es? Generamos <b>5,000 trayectorias simuladas</b> del portfolio completo "
+            f"usando Monte Carlo. Cada simulación respeta las correlaciones reales entre los 4 activos. "
+            f"El resultado: <b>{pct_pos_v:.0f}%</b> de los futuros posibles terminan en positivo. En el "
+            f"peor 5% de los escenarios, la pérdida máxima sería de <b>{abs(var_v):.1f}%</b> (VaR 95%), "
+            f"y si entramos en crisis profunda, el CVaR nos dice que la pérdida promedio sería "
+            f"<b>{abs(cvar_v):.1f}%</b>.")
+
+        story_card("✅", "Recomendación para el CFO",
+            f"Sobreponderando <b>{arima_best_ticker}</b> y diversificando con activos de baja correlación "
+            f"(bonos, commodities), podemos comprimir el riesgo de cola un 15-20%. El retorno ajustado "
+            f"por riesgo proyectado: <b>{arima_best_ret*0.7:.1f}%</b> (Sharpe > 1). La evidencia respalda "
+            f"una posición long con protección.")
 
         st.markdown("---")
 
-        # ── Storytelling Methodology Note ──
+        # ── CHRO STORYTELLING ──
+        st.markdown(f"## 👥 {t('chro_section')}")
+
+        story_card("🚨", "La Alerta de Ventas",
+            f"En una empresa de 1,470 empleados, el departamento de Ventas tiene una tasa de attrition del "
+            f"<b>{sales_att:.1f}%</b> — eso es <b>{sales_att-13:.1f} puntos por encima</b> del benchmark "
+            f"de la industria tech (13%). En términos de dinero: cada empleado que renuncia cuesta "
+            f"aproximadamente $15,000 USD en reclutamiento, onboarding y productividad perdida. "
+            f"Hay <b>{int((sales_att-13)/100 * len(hr_df[hr_df['Department']=='Sales']))}</b> empleados "
+            f"en zona de riesgo.")
+
+        story_card("🕐", "El Enemigo Silencioso: OverTime",
+            f"Usando correlación de Spearman con 10+ variables, descubrimos que el <b>principal predictor "
+            f"de rotación</b> no es el salario, ni la distancia al trabajo — es el <b>sobre tiempo (OverTime)</b> "
+            f"con r=0.25. Los empleados con horas extra tienen <b>2.4×</b> más probabilidad de irse. "
+            f"La satisfacción laboral y el ambiente de trabajo también juegan un rol, pero OverTime "
+            f"es la señal más fuerte y la más fácil de intervenir.")
+
+        story_card("⚖️", "¿Existe Inequidad Salarial?",
+            f"Aplicamos la prueba t de Student (el estándar estadístico para comparar dos grupos) "
+            f"y la respuesta es <b>no</b>. El p-valor es <b>{pval_gap}</b>, muy por encima de α=0.05. "
+            f"Las {gap_dir} ganan ligeramente más en promedio, pero la diferencia es estadísticamente "
+            f"atribuible al azar, a diferencias de JobLevel y años de experiencia, no a discriminación. "
+            f"La equidad salarial está confirmada por la evidencia.")
+
+        story_card("✅", "Plan de Acción para el CHRO",
+            f"1) <b>Retención urgente en Ventas:</b> compensación variable + desarrollo profesional "
+            f"+ eliminación de sobre tiempo obligatorio. Meta: reducir al 13% en 6 meses = ahorro de "
+            f"$150,000+ USD. 2) <b>Auditoría salarial:</b> mantener la paridad validada — monitoreo "
+            f"trimestral por JobLevel. 3) <b>Índice de satisfacción:</b> +0.3 pts proyectado en 12 meses "
+            f"con las intervenciones recomendadas.")
+
+        st.markdown("---")
+
+        # ── Storytelling Methodology ──
         st.markdown(f"### 📌 {t('methodology_note')}")
         st.markdown(f"""
-        <div class="glass-card" style="border-left:5px solid #119da4;">
-            <p style="color:#aeecef;font-size:1rem;line-height:1.7;">
-                <b style="color:#80ded9;">¿De dónde vienen los datos?</b><br>
+        <div class="glass-card" style="border-left:5px solid #20fc8f;">
+            <p style="color:#c4d8cd;font-size:1rem;line-height:1.7;">
+                <b style="color:#20fc8f;">¿De dónde vienen los datos?</b><br>
                 Los precios financieros se extrajeron de <b>Yahoo Finance</b>, el repositorio más utilizado
-                del mundo por analistas y quants para datos de mercado. Cubrimos 5 años de historia mensual
-                de AAPL, MSFT, GOOGL y AMZN — los 4 gigantes tecnológicos que juntos representan más del
-                20% del S&P 500.
+                del mundo por analistas y quants. Cubrimos 5 años de historia mensual de AAPL, MSFT, GOOGL
+                y AMZN — los 4 gigantes que juntos representan más del 20% del S&P 500. El dataset HR
+                proviene de <b>IBM Watson Analytics</b>: 1,470 empleados con 35 atributos.
             </p>
-            <p style="color:#aeecef;font-size:1rem;line-height:1.7;">
-                <b style="color:#80ded9;">¿Cómo se hicieron las proyecciones?</b><br>
-                Usamos <b>ARIMA</b> (AutoRegressive Integrated Moving Average), el estándar académico e
-                industrial para pronóstico de series temporales. Primero verificamos si los precios son
-                estacionarios con el <b>test ADF</b>. Luego, el algoritmo <code>auto_arima</code> selecciona
-                automáticamente los mejores parámetros (p,d,q) para cada acción. Las bandas de confianza del
-                80% y 95% muestran el rango de precios que el modelo considera estadísticamente probable.
+            <p style="color:#c4d8cd;font-size:1rem;line-height:1.7;">
+                <b style="color:#20fc8f;">¿Cómo se hicieron las proyecciones?</b><br>
+                Usamos <b>ARIMA</b> con selección automática de parámetros (auto_arima + test ADF).
+                Para el riesgo, <b>Monte Carlo</b> simula 5,000 trayectorias bajo distribución normal
+                multivariada, respetando las correlaciones entre activos.
             </p>
-            <p style="color:#aeecef;font-size:1rem;line-height:1.7;">
-                <b style="color:#80ded9;">¿Qué es la simulación Monte Carlo?</b><br>
-                Imaginemos 5,000 futuros posibles. En cada uno, los retornos mensuales del portfolio se generan
-                aleatoriamente respetando las correlaciones históricas entre acciones. Al final, vemos qué
-                porcentaje de esos futuros termina en ganancia, y cuál es la peor pérdida esperada con 95%
-                de confianza (<b>VaR</b>) y en los escenarios más extremos (<b>CVaR</b>).
-            </p>
-            <p style="color:#aeecef;font-size:1rem;line-height:1.7;">
-                <b style="color:#80ded9;">¿Los datos de empleados son reales?</b><br>
-                El dataset de HR proviene del famoso <b>IBM Watson Analytics</b> — 1,470 empleados con 35
-                atributos que incluyen salario, departamento, satisfacción, y si dejaron la empresa o no.
-                La brecha salarial fue validada con la <b>prueba t de Student</b> (α=0.05), el estándar
-                estadístico para comparar dos grupos y determinar si sus diferencias son reales o producto
-                del azar.
+            <p style="color:#c4d8cd;font-size:1rem;line-height:1.7;">
+                <b style="color:#20fc8f;">¿Son confiables los resultados de HR?</b><br>
+                La brecha salarial fue validada con la <b>prueba t de Student</b> (α=0.05). El modelo
+                de attrition usa <b>Regresión Logística</b> con class_weight='balanced' para manejar
+                el desbalance de clases (16% vs 84%).
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -870,6 +945,6 @@ else:
         # Footer
         st.markdown(f"""
         <div style="text-align:right;margin-top:3rem;padding-top:1rem;
-             border-top:1px solid rgba(128,222,217,0.15);">
-            <p style="color:#6d9dc5;font-weight:700;">{t('developed_by')}</p>
+             border-top:1px solid rgba(32,252,143,0.12);">
+            <p style="color:#8aaa9e;font-weight:700;">{t('developed_by')}</p>
         </div>""", unsafe_allow_html=True)
