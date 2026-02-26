@@ -1,0 +1,84 @@
+
+--- PASO 0 QA: 2026-02-26 10:42:50 ---
+[OK] pandas importado correctamente.
+[OK] numpy importado correctamente.
+[OK] plotly importado correctamente.
+[OK] streamlit importado correctamente.
+[OK] sklearn importado correctamente.
+[OK] statsmodels importado correctamente.
+[OK] yfinance importado correctamente.
+[OK] scipy importado correctamente.
+[OK] openpyxl importado correctamente.
+[OK] pmdarima importado correctamente.
+[OK] matplotlib importado correctamente.
+[2026-02-26 10:45:48] FINANCIAL | ============================================================
+[2026-02-26 10:45:48] FINANCIAL | INICIANDO PIPELINE FINANCIERO
+[2026-02-26 10:45:48] FINANCIAL | ============================================================
+[2026-02-26 10:45:54] FINANCIAL | [OK] yfinance: 60 filas descargadas para ['AAPL', 'MSFT', 'GOOGL', 'AMZN'].
+[2026-02-26 10:45:54] FINANCIAL | [OK] financial_clean.csv guardado: (60, 4)
+[2026-02-26 10:45:58] FINANCIAL | [OK] AAPL: ADF p=0.7998 → d=1
+[2026-02-26 10:45:58] FINANCIAL | [OK] ARIMA AAPL: (0, 1, 0) → forecast 12M ok.
+[2026-02-26 10:45:58] FINANCIAL | [OK] AMZN: ADF p=0.7387 → d=1
+[2026-02-26 10:45:59] FINANCIAL | [OK] ARIMA AMZN: (0, 1, 0) → forecast 12M ok.
+[2026-02-26 10:45:59] FINANCIAL | [OK] GOOGL: ADF p=0.9951 → d=1
+[2026-02-26 10:45:59] FINANCIAL | [OK] ARIMA GOOGL: (0, 1, 0) → forecast 12M ok.
+[2026-02-26 10:45:59] FINANCIAL | [OK] MSFT: ADF p=0.5427 → d=1
+[2026-02-26 10:45:59] FINANCIAL | [OK] ARIMA MSFT: (0, 1, 0) → forecast 12M ok.
+[2026-02-26 10:45:59] FINANCIAL | [QA] arima_forecast.csv: 48 filas. Tickers: ['AAPL', 'AMZN', 'GOOGL', 'MSFT']
+[2026-02-26 10:46:08] FINANCIAL | [OK] Monte Carlo: VaR95=-18.79%, CVaR=-25.50%, P50=15.72%, P95=66.09%, %Positivas=75.7%
+[2026-02-26 10:46:08] FINANCIAL | [QA] monte_carlo_results.csv: 5000 filas.
+[2026-02-26 10:46:08] FINANCIAL | PIPELINE FINANCIERO COMPLETADO ✓
+[2026-02-26 10:46:08] FINANCIAL | ============================================================
+[2026-02-26 10:46:21] HR | ============================================================
+[2026-02-26 10:46:21] HR | INICIANDO PIPELINE HR ANALYTICS
+[2026-02-26 10:46:21] HR | ============================================================
+[2026-02-26 10:46:21] HR | [OK] Dataset cargado: 1470 filas × 35 columnas.
+[2026-02-26 10:46:21] HR | [QA] Nulos totales: 0
+[2026-02-26 10:46:21] HR | [QA] Attrition distribution: {'No': 1233, 'Yes': 237}
+[2026-02-26 10:46:21] HR | [OK] Tasa global de attrition: 16.1%
+[2026-02-26 10:46:21] HR | [OK] Attrition por dpto:
+            Department  Attrition_Rate  Attrition_Rate_Pct
+       Human Resources        0.190476                19.0
+Research & Development        0.138398                13.8
+                 Sales        0.206278                20.6
+[2026-02-26 10:46:21] HR | [OK] Top factores attrition:
+                Feature  Spearman_r  p_value
+               OverTime      0.2461   0.0000
+      TotalWorkingYears     -0.1990   0.0000
+          MonthlyIncome     -0.1983   0.0000
+               JobLevel     -0.1904   0.0000
+         YearsAtCompany     -0.1904   0.0000
+     YearsInCurrentRole     -0.1806   0.0000
+                    Age     -0.1712   0.0000
+        JobSatisfaction     -0.1029   0.0001
+EnvironmentSatisfaction     -0.0965   0.0002
+       DistanceFromHome      0.0792   0.0024
+[2026-02-26 10:46:21] HR | [OK] Logistic Regression: {'accuracy': 0.6495, 'precision': 0.2603, 'recall': 0.6441, 'f1': 0.3707}
+[2026-02-26 10:46:21] HR | [WARN] Accuracy < 70%. Revisar features.
+[2026-02-26 10:46:21] HR | [OK] Salario por género:
+               mean  median          std  count
+Gender                                         
+Female  6686.566327  5081.5  4695.608507    588
+Male    6380.507937  4837.5  4714.856577    882
+[2026-02-26 10:46:21] HR | [OK] Prueba t global: t=-1.2213, p=0.2222, gap=-4.8%
+[2026-02-26 10:46:21] HR | [OK] Brecha por dpto:
+            Department  Male_Avg  Female_Avg  Gap_Pct  Gap_Abs  t_stat  p_value  Significant
+                 Sales   6949.65     6972.13    -0.32   -22.48 -0.0577   0.9540        False
+Research & Development   6129.89     6513.69    -6.26  -383.80 -1.1879   0.2352        False
+       Human Resources   6371.02     7264.00   -14.02  -892.98 -0.5668   0.5729        False
+[2026-02-26 10:46:21] HR | [OK] Distribución género por dpto:
+Gender                     Female       Male
+Department                                  
+Human Resources         31.746032  68.253968
+Research & Development  39.438085  60.561915
+Sales                   42.376682  57.623318
+[2026-02-26 10:46:21] HR | [OK] Satisfacción por género:
+        JobSatisfaction  EnvironmentSatisfaction  WorkLifeBalance
+Gender                                                           
+Female             2.68                     2.72             2.76
+Male               2.76                     2.72             2.76
+[2026-02-26 10:46:22] HR | [OK] hr_clean.csv guardado: (1470, 37)
+[2026-02-26 10:46:22] HR | PIPELINE HR COMPLETADO ✓
+[2026-02-26 10:46:22] HR | ============================================================
+[2026-02-26 10:46:22] HR | [QA] p-value prueba t global: 0.2222 — NO significativo (α=0.05)
+[2026-02-26 10:46:22] HR | [QA] Accuracy Logistic Regression: 64.95% — WARN: <70%
